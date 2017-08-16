@@ -1,0 +1,28 @@
+<p> Multiple Select Combo! </p>
+<div>
+    <span *ngIf="_selectedItems.length>0"><b> Selected Items</b> </span>
+    <ul class="pull-right list-inline">
+        <li *ngFor="let selectedItem of _selectedItems" class="list-inline-item">{{ selectedItem.label }}</li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle" (click)="toggleSelect()">
+    <span class="pull-left" [innerHtml]="header"></span>
+    <span class="caret pull-right"></span>
+  </button>
+    <ul class="dropdown-menu multi-select-popup" [ngStyle]="{display:isOpen ? 'block' : 'none'}" style="display:block;">
+        <li *ngIf="enableFilter" class="filter-container">
+            <div class="form-group has-feedback filter">
+                <input type="text" class="form-control boxed" [(ngModel)]="filteredValue" id="exampleInputEmail1" placeholder="Enter name" />
+            </div>
+        </li>
+        <li *ngFor="let item of _items | filterComboList:{label:filteredValue}">
+            <div class="checkbox checkbox-primary">
+                <input type="checkbox" [checked]="item.checked" [id]="item.Id" (change)="select(item)">
+                <label [for]="item.Id">{{item.label}}</label>
+            </div>
+        </li>
+    </ul>
+</div>
+<div>
+</div>

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12">
+        Below used Combo box plugin, you can use it by just add the "my-multiselect-combo" selector to add anywhere in the application.
+        <my-multiselect-combo (getSelectedItem)="getSelectedItemFromDropDown($event)"> </my-multiselect-combo>
+    </div>
+
+    <span *ngIf="selectedArr.length>0"> 
+        <b> This below item emmited from above drop down component </b> 
+     </span>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-inline">
+                <li *ngFor="let selectedItem of selectedArr" class="list-inline-item">{{ selectedItem.label }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
